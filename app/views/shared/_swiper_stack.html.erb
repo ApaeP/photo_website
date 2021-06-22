@@ -1,6 +1,6 @@
 <% categories&.each do |cat| %>
   <%=
-    render 'shared/swiper_link',
+    render 'shared/category_swiper',
     category: cat,
     given_path: cat.show_url,
     swiper_count: categories.count

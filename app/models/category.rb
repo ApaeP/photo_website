@@ -1,3 +1,6 @@
 class Category < ApplicationRecord
-  belongs_to :parent_category
+  include CategoriesHelper
+
+  belongs_to :main_category
+  has_many :photos
 end
