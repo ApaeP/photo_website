@@ -1,2 +1,13 @@
-<h1>Categories#show</h1>
-<p>Find me in app/views/categories/show.html.erb</p>
+<div class="min-h-screen flex flex-col justify-center">
+  <div class="flex flex-wrap justify-around p-1/12">
+    <% @photos.each do |photo| %>
+      <%=
+        cl_image_tag photo.image.key,
+        height: 140,
+        width: 300,
+        alt: "image: #{photo.name}",
+        class: 'w-3/12'
+      %>
+    <% end %>
+  </div>
+</div>

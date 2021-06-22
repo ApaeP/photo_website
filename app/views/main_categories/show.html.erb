@@ -1,2 +1,12 @@
-<h1>MainCategories#show</h1>
-<p>Find me in app/views/main_categories/show.html.erb</p>
+<div class="h-screen flex flex-col justify-center bg-white">
+  <div class="h-1/2 flex justify-around">
+    <div class="w-3/12 flex flex-col justify-center">
+      <%= link_to :back do %>
+        <%= image_tag "logo.svg", class: 'max-h-full object-contain',alt: "main_logo" %>
+      <% end %>
+    </div>
+    <div class="w-7/12">
+      <%= render 'shared/swiper_stack', categories: @categories %>
+    </div>
+  </div>
+</div>
