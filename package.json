@@ -11,6 +11,7 @@
     "@tailwindcss/typography": "^0.4.1",
     "autoprefixer": "^9",
     "postcss": "^7",
+    "swiper": "^6.7.0",
     "tailwindcss": "npm:@tailwindcss/postcss7-compat",
     "turbolinks": "^5.2.0",
     "webpack": "^4.46.0",
