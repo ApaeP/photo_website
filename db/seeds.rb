@@ -16,11 +16,11 @@ puts "\nSTART SEEDING"
     end
     Category.destroy_all
     MainCategory.destroy_all
-    # User.destroy_all
+    User.destroy_all
   puts "Everything has been destroyed"
 
   puts "\nCreating user"
-    # User.create!(email: "test@test.com", password: 'azerty', password_confirmation: 'azerty') if Rails.env.development?
+    User.create!(email: "test@test.com", password: 'azerty', password_confirmation: 'azerty') if Rails.env.development?
   puts "User created"
 
   puts "\nCreating Main categories"
@@ -40,7 +40,7 @@ puts "\nSTART SEEDING"
       puts "\nTour n°#{tour} sur #{nb_de_tours}\n"
 
       puts "\nInsects photos creation (#{insect_links.length})"
-        insect_links.each_with_index do |link, i|
+        insect_links.first(3).each_with_index do |link, i|
           photo_insect = Photo.new(name: "Insecte#{i+1}", description: "Insecte n°#{i+1} super stylé", category: Category.find_by(title: "Micro-studio"))
           photo_insect.main_category_id = photo_insect.category.main_category_id
           photo_insect.image.attach(io: URI.open(link), filename: "Photo Insecte n°#{i+1}", content_type: "image/jpg")
@@ -50,7 +50,7 @@ puts "\nSTART SEEDING"
       puts "Insects photos created"
 
       puts "\nE_1 photos creation (#{e_1_links.length})"
-        e_1_links.each_with_index do |link, i|
+        e_1_links.first(3).each_with_index do |link, i|
           photo_e1 = Photo.new(name: "E-1 - #{i+1}", description: "E-1 n°#{i+1} de ouf", category: Category.find_by(title: "E-1"))
           photo_e1.main_category_id = photo_e1.category.main_category_id
           photo_e1.image.attach(io: URI.open(link), filename: "Photo E-1 n°#{i+1}", content_type: "image/jpg")
@@ -60,7 +60,7 @@ puts "\nSTART SEEDING"
       puts "E-1 photos created"
 
       puts "\nR2000 photos creation (#{r2000_links.length})"
-        r2000_links.each_with_index do |link, i|
+        r2000_links.first(3).each_with_index do |link, i|
           photo_r2000 = Photo.new(name: "R2000 - #{i+1}", description: "R2000 n°#{i+1} waou", category: Category.find_by(title: "R2000"))
           photo_r2000.main_category_id = photo_r2000.category.main_category_id
           photo_r2000.image.attach(io: URI.open(link), filename: "Photo R2000 n°#{i+1}", content_type: "image/jpg")
@@ -70,7 +70,7 @@ puts "\nSTART SEEDING"
       puts "R2000 photos created"
 
       puts "\nHotel photos creation (#{hotel_links.length})"
-        hotel_links.each_with_index do |link, i|
+        hotel_links.first(3).each_with_index do |link, i|
           photo_hotel = Photo.new(name: "Hotel - #{i+1}", description: "Hotel n°#{i+1} amazing", category: Category.find_by(title: "Hôtels"))
           photo_hotel.main_category_id = photo_hotel.category.main_category_id
           photo_hotel.image.attach(io: URI.open(link), filename: "Photo Hotel n°#{i+1}", content_type: "image/jpg")
@@ -80,7 +80,7 @@ puts "\nSTART SEEDING"
       puts "Hotel photos created"
 
       puts "\nImmobilier photos creation (#{immo_links.length})"
-        immo_links.each_with_index do |link, i|
+        immo_links.first(3).each_with_index do |link, i|
           photo_immo = Photo.new(name: "Immo - #{i+1}", description: "Immo n°#{i+1} waou", category: Category.find_by(title: "Immobilier"))
           photo_immo.main_category_id = photo_immo.category.main_category_id
           photo_immo.image.attach(io: URI.open(link), filename: "Photo Immo n°#{i+1}", content_type: "image/jpg")
@@ -93,3 +93,4 @@ puts "\nSTART SEEDING"
   puts "\nCreating photos done"
 
 puts "\nSEEDING DONE"
+User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
