@@ -1,0 +1,17 @@
+<%= link_to given_path do %>
+  <div class="relative h-1/<%= swiper_count %>" data-controller="swiper">
+    <div class="swiper-container max-h-full filter brightness-75" data-swiper-target="container">
+      <ul class="swiper-wrapper">
+        <% category.random_pics.shuffle.each_with_index do |item| %>
+          <li class="swiper-slide">
+            <%= cl_image_tag item.image.key, class: 'w-full object-cover', height: 100, 'data-swiper-target' => 'images' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <h1 class="absolute text-center top-0 left-0 right-0 bottom-0 flex flex-col justify-center
+               text-4xl z-50 text-white transition-all duration-700 hover:bg-gray-200 hover:bg-opacity-20">
+      <%= category.title.upcase %>
+    </h1>
+  </div>
+<% end %>
