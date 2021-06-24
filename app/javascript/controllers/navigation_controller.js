@@ -11,7 +11,6 @@ export default class extends Controller {
     setTimeout(() => {
       body.innerHTML = ''
       this._fetchNextPage(url)
-      this._fadeIn(body)
     }, 750);
   }
 
@@ -38,7 +37,10 @@ export default class extends Controller {
       .then(data => data.text())
       .then((html) => {
         this.bodyTarget.innerHTML = html
-      })
+
+      }).then(
+          this._fadeIn(this.bodyTarget)
+        )
   }
 
 }
