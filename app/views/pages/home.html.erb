@@ -19,10 +19,10 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to main_categories_path do %>
+  <%= fade_out_link main_categories_path do %>
     <div class="absolute rounded-full backdrop-blur h-1/2 w-1/2 top-1/4 left-1/4
-                flex flex-col justify-center z-40 opacity-50 transition-all
-                hover:opacity-100 duration-300">
+                flex flex-col justify-center z-40 opacity-70 transition-all
+                hover:opacity-100 duration-300 cursor-pointer">
       <div class="flex justify-center">
         <%=
           inline_svg_pack_tag "images/logo.svg",
@@ -33,10 +33,10 @@
           }
         %>
       </div>
-      <h1 class="text-6xl text-center font-extralight text-white">
+      <h1 class="text-6xl text-center font-extralight text-white mt-3">
         PAUL PORTIER
       </h1>
-      <h6 class="text-2xl text-center font-extralight text-white">
+      <h6 class="text-2xl text-center font-thin text-white mt-3">
         PHOTOGRAPHE
       </h6>
     </div>
