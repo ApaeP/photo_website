@@ -74,6 +74,8 @@ ActiveRecord::Schema.define(version: 2021_06_22_204458) do
   create_table "photos", force: :cascade do |t|
     t.string "name"
     t.text "description"
+    t.boolean "home", default: false
+    t.boolean "menu", default: false
     t.bigint "main_category_id", null: false
     t.bigint "category_id", null: false
     t.datetime "created_at", precision: 6, null: false

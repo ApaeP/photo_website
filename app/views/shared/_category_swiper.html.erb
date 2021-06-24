@@ -1,10 +1,10 @@
 <%= link_to given_path do %>
-  <div class="relative h-1/<%= swiper_count %>" data-controller="swiper">
+  <div class="relative h-1/<%= swiper_count %>" data-controller="swiper" data-swiper-autoplay="2000">
     <div class="swiper-container max-h-full filter brightness-75" data-swiper-target="container">
       <ul class="swiper-wrapper">
         <% category.random_pics.shuffle.each_with_index do |item| %>
           <li class="swiper-slide">
-            <%= cl_image_tag item.image.key, class: 'w-full object-cover', height: 100, 'data-swiper-target' => 'images' %>
+            <%= cl_image_tag item.image.key, class: 'w-full object-cover', height: 100, width: 250, 'data-swiper-target' => 'images' %>
           </li>
         <% end %>
       </ul>

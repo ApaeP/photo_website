@@ -20,6 +20,13 @@ export default class extends Controller {
     })
   }
 
+  update() {
+    this.imagesTargets.forEach((image) => {
+      image.removeAttribute('style')
+    })
+    this.instance.update()
+  }
+
   get config() {
     let base = {
       watchOverflow: true,
@@ -35,7 +42,14 @@ export default class extends Controller {
       autoplay: {
         delay: 2500,
         disableOnInteraction: false
-      }
+      },
+      autoplay: {
+        delay: this.data.get('autoplay'),
+        disableOnInteraction: true
+      },
+      watchOverflow: true,
+      preloadImages: false,
+      lazy: true
     }
     return base
   }
