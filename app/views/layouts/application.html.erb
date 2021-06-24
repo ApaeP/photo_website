@@ -11,9 +11,9 @@
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
-  <body class="bg-black">
-    <%= render 'shared/flashes' %>
-    <div class="loading" data-controller="page-animation" data-page-animation-target="main">
+  <body class="bg-black" data-controller="navigation">
+    <div class="stimulus-body" data-navigation-target="body">
+      <%= render 'shared/flashes' %>
       <%= yield %>
     </div>
   </body>

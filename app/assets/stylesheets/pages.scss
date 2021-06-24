@@ -1,9 +1,9 @@
-.loading {
-  animation: fadeIn 2s;
+.fade-in {
+  animation: fadeIn 0.75s;
 }
 
-.load-out {
-  animation: fadeOut 1s;
+.fade-out {
+  animation: fadeOut 0.75s;
 }
 
 @keyframes fadeIn {
