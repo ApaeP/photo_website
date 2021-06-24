@@ -4,6 +4,36 @@ ActiveAdmin.register Photo do
   filter :main_category_id, as: :check_boxes, collection: MainCategory.all
   filter :category_id, as: :check_boxes, collection: Category.all
 
+  batch_action :tag_for_home_and_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: true, menu: true) }
+    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil & sur le menu de leurs catégories"
+  end
+
+  batch_action :untag_for_home_and_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: false, menu: false) }
+    redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur la page d'accueil & sur le menu de leurs catégories"
+  end
+
+  batch_action :tag_for_home do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: true) }
+    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil"
+  end
+
+  batch_action :untag_for_home do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: false) }
+    redirect_to collection_path, alert: "Des photos ont été détaggées afin ne plus être utilisées sur la page d'accueil"
+  end
+
+  batch_action :tag_for_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(menu: true) }
+    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur le menu de leurs catégories"
+  end
+
+  batch_action :untag_for_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(menu: false) }
+    redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur le menu de leurs catégories"
+  end
+
   controller do
     def create
       params[:photo][:main_category_id] = Category.find(params[:photo][:category_id]).main_category.id
