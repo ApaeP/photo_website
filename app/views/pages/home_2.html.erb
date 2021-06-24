@@ -1,0 +1,38 @@
+<div class="relative h-screen bg-black" data-controller="swiper" data-swiper-autoplay="4000" data-action="resize@window->swiper#update">
+  <div class="swiper-container h-full filter brightness-75" data-swiper-target="container">
+    <ul class="swiper-wrapper">
+      <% Photo.home.shuffle.each_with_index do |item| %>
+        <li class="swiper-slide relative">
+          <div class="bg-black top-0 left-0 right-0 bottom-0 w-full h-full">
+            <%=
+              custom_cl_image_tag item.image.key,
+              cover: item.main_category.title != 'Projets',
+              class: 'h-full w-full swiper-lazy',
+              height: 1440,
+              'data-swiper-target' => 'images'
+            %>
+          </div>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+  <%= link_to root_path do %>
+    <div class="absolute rounded-full backdrop-blur h-1/2 w-1/2 top-1/4 left-1/4
+                flex flex-col justify-center z-40 opacity-50 transition-all
+                hover:opacity-100 duration-300">
+      <div class="flex justify-center">
+        <%=
+          inline_svg_pack_tag "images/logo.svg",
+          class: 'h-40 ',
+          data: {
+            controller: 'inline-svg',
+            'svg-class' => 'fill-current text-white'
+          }
+        %>
+      </div>
+      <h1 class="text-6xl text-center font-extralight text-white">
+        PAUL PORTIER
+      </h1>
+    </div>
+  <% end %>
+</div>

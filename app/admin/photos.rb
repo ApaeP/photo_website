@@ -12,12 +12,28 @@ ActiveAdmin.register Photo do
     end
   end
 
+  index do
+    selectable_column
+    column :photo do |resource|
+      cl_image_tag(resource.image.key, height: '50', crop: :fill) if resource.image.attached?
+    end
+    column :name
+    column :home
+    column :menu
+    column :main_category
+    column :category
+    column :description
+    actions
+  end
+
   show do
     attributes_table do
       row :name
       row :description
       row :main_category
       row :category
+      row :home
+      row :menu
       row :photo do
         cl_image_tag(resource.image.key, height: '300', crop: :fill) if resource.image.attached?
       end
@@ -28,6 +44,8 @@ ActiveAdmin.register Photo do
     f.inputs do
       f.input :name
       f.input :description
+      f.input :home
+      f.input :menu
       f.input :category_id, as: :radio, collection: Category.all
       f.input :image, as: :file
       div do
@@ -36,5 +54,11 @@ ActiveAdmin.register Photo do
     f.actions
   end
 
-  permit_params :name, :description, :category_id, :main_category_id, :image
+  permit_params :name,
+                :description,
+                :category_id,
+                :main_category_id,
+                :image,
+                :home,
+                :menu
 end
