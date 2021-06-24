@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-  # root to: "pages#home"
-  root to: "pages#home_2"
+  root to: "pages#home"
 
   devise_for :users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
