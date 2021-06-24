@@ -5,6 +5,10 @@ class MainCategoriesController < ApplicationController
     @categories = @main_category.categories
   end
 
+  def index
+    @categories = MainCategory.all
+  end
+
   private
 
   def set_main_category

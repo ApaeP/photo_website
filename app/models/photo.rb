@@ -4,6 +4,6 @@ class Photo < ApplicationRecord
 
   has_one_attached :image
 
-  scope :home, -> { where( home: true ) }
-  scope :menu, -> { where( menu: true ) }
+  scope :for_home, -> { where( home: true ) }
+  scope :for_menu, -> { where( menu: true ) }
 end

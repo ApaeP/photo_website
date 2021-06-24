@@ -1,7 +1,7 @@
 <div class="relative h-screen bg-black" data-controller="swiper" data-swiper-autoplay="4000" data-action="resize@window->swiper#update">
   <div class="swiper-container h-full filter brightness-75" data-swiper-target="container">
     <ul class="swiper-wrapper">
-      <% Photo.home.shuffle.each_with_index do |item| %>
+      <% Photo.for_home.shuffle.each_with_index do |item| %>
         <li class="swiper-slide relative">
           <div class="bg-black top-0 left-0 right-0 bottom-0 w-full h-full">
             <%=
@@ -16,7 +16,7 @@
       <% end %>
     </ul>
   </div>
-  <%= link_to root_path do %>
+  <%= link_to main_categories_path do %>
     <div class="absolute rounded-full backdrop-blur h-1/2 w-1/2 top-1/4 left-1/4
                 flex flex-col justify-center z-40 opacity-50 transition-all
                 hover:opacity-100 duration-300">

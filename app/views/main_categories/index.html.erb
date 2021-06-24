@@ -1,0 +1,12 @@
+<div class="center-y">
+  <div class="flex justify-around h-2/3">
+    <div class="w-3/12 flex flex-col justify-center">
+      <%= link_to :back do %>
+        <%= image_tag "logo.svg", class: 'max-h-full object-contain',alt: "main_logo" %>
+      <% end %>
+    </div>
+    <div class="w-7/12">
+      <%= render 'shared/swiper_stack', categories: @categories %>
+    </div>
+  </div>
+</div>
