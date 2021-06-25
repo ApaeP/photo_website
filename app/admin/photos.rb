@@ -14,6 +14,16 @@ ActiveAdmin.register Photo do
     redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur la page d'accueil & sur le menu de leurs catégories"
   end
 
+  batch_action :cover_for_home_and_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: true) }
+    redirect_to collection_path, alert: "Les photos séléctionnées couvreront le menu de la page d'accueil"
+  end
+
+  batch_action :uncover_for_home_and_menu do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: false) }
+    redirect_to collection_path, alert: "Les photos séléctionnées ne couvreront pas le menu de la page d'accueil"
+  end
+
   batch_action :tag_for_home do |ids|
     batch_action_collection.find(ids).each { |photo| photo.update(home: true) }
     redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil"
@@ -49,6 +59,7 @@ ActiveAdmin.register Photo do
     end
     column :name
     column :home
+    column :cover_home
     column :menu
     column :main_category
     column :category
@@ -63,6 +74,7 @@ ActiveAdmin.register Photo do
       row :main_category
       row :category
       row :home
+      row :cover_home
       row :menu
       row :photo do
         cl_image_tag(resource.image.key, height: '300', crop: :fill) if resource.image.attached?
@@ -75,6 +87,7 @@ ActiveAdmin.register Photo do
       f.input :name
       f.input :description
       f.input :home
+      f.input :cover_home
       f.input :menu
       f.input :category_id, as: :radio, collection: Category.all
       f.input :image, as: :file
@@ -90,5 +103,6 @@ ActiveAdmin.register Photo do
                 :main_category_id,
                 :image,
                 :home,
+                :cover_home,
                 :menu
 end
