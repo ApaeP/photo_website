@@ -1,13 +1,7 @@
-<div class="min-h-screen flex flex-col justify-center">
-  <div class="flex flex-wrap justify-around p-1/12">
+<div class="min-h-screen flex flex-col justify-center" data-controller="grid">
+  <div class="flex flex-wrap justify-around p-1/12 mx-auto" data-grid-target="wrapper">
     <% @photos.each do |photo| %>
-      <%=
-        cl_image_tag photo.image.key,
-        height: 140,
-        width: 300,
-        alt: "image: #{photo.name}",
-        class: 'w-3/12'
-      %>
+      <%= render 'photos/photo_card', photo: photo %>
     <% end %>
   </div>
 </div>
