@@ -59,5 +59,6 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'stimulus-rails'
 gem 'cloudinary'
 gem 'devise'
+gem 'simple_form'
 gem 'activeadmin'
 gem 'inline_svg'
