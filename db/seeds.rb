@@ -20,9 +20,9 @@ puts "\nSTART SEEDING"
   puts "DB Cleaned"
 
   puts "\nCreating user"
-    if Rails.env.development? || if Rails.env.test?
+    if Rails.env.development? || Rails.env.test?
       User.create!(email: "test@test.com", password: 'azerty', password_confirmation: 'azerty')
-    elsif if Rails.env.production?
+    elsif Rails.env.production?
       User.create!(email: ENV['GMAIL_USER'], password: ENV['GMAIL_PASSWORD'], password_confirmation: ENV['GMAIL_PASSWORD'])
     end
   puts "#{User.count} user(s) created"
