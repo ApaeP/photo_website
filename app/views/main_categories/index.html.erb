@@ -1,7 +1,7 @@
 <div class="center-y">
   <div class="flex justify-around h-2/3">
     <div class="w-3/12 flex flex-col justify-center">
-      <%= stimulus_link @back_url, css_classes: 'opacity-70 hover:opacity-100 transition-all duration-300' do %>
+      <%= stimulus_link_to @back_url, css_classes: 'opacity-70 hover:opacity-100 transition-all duration-300' do %>
         <%=
           inline_svg_pack_tag "images/logo.svg",
           class: 'h-40 w-full',

@@ -1,7 +1,11 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["body"]
+  static targets = ["body", "links"]
+
+  connect() {
+    this._appendPreloadLinks()
+  }
 
   visit(event) {
     const body = this.bodyTarget
@@ -12,6 +16,20 @@ export default class extends Controller {
       body.innerHTML = ''
       this._fetchNextPage(url)
     }, 750);
+  }
+
+  // useless?
+  _appendPreloadLinks() {
+    this.linksTargets.forEach((stimulus_link) => {
+      const head = document.querySelector('head')
+      head.append(
+        `<link
+          href="${stimulus_link.dataset.url}"
+          rel="preload"
+          crossorigin="anonymous"
+        />`
+      )
+    })
   }
 
   _fadeOut(element) {

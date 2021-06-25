@@ -29,27 +29,30 @@ export default class extends Controller {
 
   get config() {
     let base = {
-      watchOverflow: true,
-      watchSlidesProgress: true,
-      breakpoints: {
-        640: {},
-        768: {},
-        1024: {},
-        1280: {}
-      },
+      // watchOverflow: true,
+      // watchSlidesProgress: true,
+      // breakpoints: {
+      //   640: {},
+      //   768: {},
+      //   1024: {},
+      //   1280: {}
+      // },
       effect: 'fade',
       loop: true,
-      autoplay: {
-        delay: 2500,
-        disableOnInteraction: false
-      },
+      // autoplay: {
+      //   delay: 2500,
+      //   disableOnInteraction: false
+      // },
       autoplay: {
         delay: this.data.get('autoplay'),
         disableOnInteraction: true
       },
-      watchOverflow: true,
-      preloadImages: false,
-      lazy: true
+      // watchOverflow: true,
+      // preloadImages: false,
+      // lazy: true,
+      // a11y: {
+      //   enabled: false
+      // }
     }
     return base
   }
