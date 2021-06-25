@@ -8,7 +8,7 @@ immo_links = []
 
 puts "\nSTART SEEDING"
 
-  puts "\nDestroying database"
+  puts "\nCleaning DB"
     photo_count = Photo.count
     Photo.all.each_with_index do |photo, i|
       puts "Destroying pic n°#{i}/#{photo_count}"
@@ -17,21 +17,25 @@ puts "\nSTART SEEDING"
     Category.destroy_all
     MainCategory.destroy_all
     User.destroy_all
-  puts "Everything has been destroyed"
+  puts "DB Cleaned"
 
   puts "\nCreating user"
-    User.create!(email: "test@test.com", password: 'azerty', password_confirmation: 'azerty') if Rails.env.development?
-  puts "User created"
+    if Rails.env.development? || if Rails.env.test?
+      User.create!(email: "test@test.com", password: 'azerty', password_confirmation: 'azerty')
+    elsif if Rails.env.production?
+      User.create!(email: ENV['GMAIL_USER'], password: ENV['GMAIL_PASSWORD'], password_confirmation: ENV['GMAIL_PASSWORD'])
+    end
+  puts "#{User.count} user(s) created"
 
   puts "\nCreating Main categories"
     main_categories.each { |cat| MainCategory.create!(title: cat) }
   puts "Main categories created"
 
-  puts "\nCreating Child categories"
+  puts "\nCreating categories"
     categories.each_with_index do |cat, i|
       i < 2 ? Category.create!(title: cat, main_category: MainCategory.find_by(title: "Pro")) : Category.create!(title: cat, main_category: MainCategory.find_by(title: "Projets"))
     end
-  puts "Child categories created"
+  puts "Categories created"
 
   puts "\nCreating photos"
     nb_de_tours = 1
@@ -93,4 +97,3 @@ puts "\nSTART SEEDING"
   puts "\nCreating photos done"
 
 puts "\nSEEDING DONE"
-User.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
