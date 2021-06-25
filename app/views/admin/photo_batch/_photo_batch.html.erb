@@ -1,0 +1,5 @@
+<%= simple_form_for :photos, url: admin_photo_batch_add_batch_path do |f| %>
+  <%= f.input :category, as: :radio_buttons, collection: Category.all %>
+  <%= f.file_field :photos, as: :file, multiple: true %>
+  <%= f.submit "Traiter" %>
+<% end %>
