@@ -1,7 +1,22 @@
-<div class="min-h-screen flex flex-col justify-center" data-controller="grid">
-  <div class="flex flex-wrap justify-around p-1/12 mx-auto" data-grid-target="wrapper">
-    <% @photos.each do |photo| %>
-      <%= render 'photos/photo_card', photo: photo %>
+<div class="min-h-screen flex flex-col justify-center">
+  <div class="flex flex-wrap justify-around p-12 mx-auto">
+    <% @photos.each_with_index do |photo, index| %>
+      <div class="group w-3/12 relative m-4 flex flex-col justify-center">
+        <%=
+          cl_image_tag photo.image.key,
+          height: '500',
+          crop: :fill,
+          alt: "image: #{photo.name}",
+          class: 'w-full',
+          style: 'border: solid 1px rgba(255, 255, 255, 0.2)'
+        %>
+        <%= stimulus_link_to show_swiper_path(rotate: index), css_classes: "absolute h-full w-full left-0 top-0 flex flex-col
+                    justify-center  text-center cursor-pointer
+                    opacity-0 bg-black bg-opacity-40
+                    group-hover:opacity-100 transition-all" do %>
+          <span class="text-white mt-2 text-xl"><%= photo&.name %></span>
+        <% end %>
+      </div>
     <% end %>
   </div>
 </div>
