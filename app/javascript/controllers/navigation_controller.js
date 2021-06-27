@@ -54,7 +54,7 @@ export default class extends Controller {
     fetch(`${window.location.href.match(/^.+\/\/[^\/]+/)[0]}${url}`)
       .then(data => data.text())
       .then((html) => {
-        this.bodyTarget.innerHTML = html
+        this.bodyTarget.outerHTML = html
 
       }).then(
           this._fadeIn(this.bodyTarget)
