@@ -1,7 +1,7 @@
 <%= stimulus_link_to given_path, css_classes: "relative h-1/#{swiper_count}" do %>
   <div class="h-full" data-controller="swiper" data-swiper-autoplay="2000">
     <div class="swiper-container max-h-full filter brightness-75" data-swiper-target="container">
-      <ul class="swiper-wrapper m-0 p-0">
+      <ul class="swiper-wrapper m-0 p-0 list-none">
         <% category.random_pics.shuffle.each_with_index do |item| %>
           <li class="swiper-slide">
             <%= cl_image_tag item.image.key, class: 'w-full object-cover', height: 100, width: 250, 'data-swiper-target' => 'images' %>
