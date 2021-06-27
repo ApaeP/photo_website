@@ -1,0 +1,45 @@
+<div class="h-screen">
+  <div class="h-full" data-controller="swiper" >
+    <div class="h-24 flex">
+      <div class="w-2/12">
+        <%#= stimulus_link_to root_path, css_classes: 'h-full flex flex-col justify-center group' do %>
+          <%#=
+            inline_svg_pack_tag "images/logo.svg",
+            class: 'h-5/6 w-2/6',
+            data: {
+              controller: 'inline-svg',
+              'svg-class' => 'fill-current text-white group-hover:text-gray-500 transition-all duration-300'
+            }
+          %>
+        <%# end %>
+      </div>
+      <div class="w-8/12 text-center flex flex-col justify-center text-gray-100" data-swiper-target="name">CACA</div>
+      <div class="w-2/12 flex justify-end">
+        <%= stimulus_link_to category_path(@category), css_classes: 'h-full w-3/6 group flex align-center justify-center items-center' do %>
+          <%=
+            inline_svg_pack_tag "images/cross.svg",
+            class: 'h-2/6 w-2/6',
+            data: {
+              controller: 'inline-svg',
+              'svg-class' => 'fill-current text-white group-hover:text-gray-500 transition-all duration-300'
+            }
+          %>
+        <% end %>
+      </div>
+    </div>
+    <span type="span" class="swiper-button-prev swiper-buttons" data-swiper-target="buttonPrev" data-action="click->swiper#prevSlide"></span>
+    <div class="swiper-container max-h-full filter brightness-75" data-swiper-target="container"  style="height: calc(100vh - 6rem);">
+      <ul class="swiper-wrapper m-0 p-0 h-full list-none">
+        <% @photos.each_with_index do |item| %>
+          <li class="swiper-slide h-full bg-black" data-name="<%= item.name %>" >
+            <%= cl_image_tag item.image.key,
+                class: 'w-full h-full object-contain',
+                height: 100, width: 250,
+                'data-swiper-target' => 'images' %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+    <span type="span" class="swiper-button-next swiper-buttons" data-swiper-target="buttonNext" data-action="click->swiper#nextSlide"></span>
+  </div>
+</div>
