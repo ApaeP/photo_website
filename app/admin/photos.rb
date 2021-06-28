@@ -84,6 +84,9 @@ ActiveAdmin.register Photo do
 
   form do |f|
     f.inputs do
+      div style: 'display: flex; justify-content: center;' do
+        cl_image_tag(resource.image.key, height: '300', crop: :fill) if resource.image.attached?
+      end
       f.input :name
       f.input :description
       f.input :home
@@ -91,8 +94,6 @@ ActiveAdmin.register Photo do
       f.input :menu
       f.input :category_id, as: :radio, collection: Category.all
       f.input :image, as: :file
-      div do
-      end
     end
     f.actions
   end
