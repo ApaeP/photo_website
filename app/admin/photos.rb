@@ -4,44 +4,44 @@ ActiveAdmin.register Photo do
   filter :main_category_id, as: :check_boxes, collection: MainCategory.all
   filter :category_id, as: :check_boxes, collection: Category.all
 
-  batch_action :tag_for_home_and_menu do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(home: true, menu: true) }
-    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil & sur le menu de leurs catégories"
-  end
-
-  batch_action :untag_for_home_and_menu do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(home: false, menu: false) }
-    redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur la page d'accueil & sur le menu de leurs catégories"
-  end
-
-  batch_action :cover_for_home_and_menu do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: true) }
-    redirect_to collection_path, alert: "Les photos séléctionnées couvreront le menu de la page d'accueil"
-  end
-
-  batch_action :uncover_for_home_and_menu do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: false) }
-    redirect_to collection_path, alert: "Les photos séléctionnées ne couvreront pas le menu de la page d'accueil"
-  end
-
-  batch_action :tag_for_home do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(home: true) }
-    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil"
-  end
-
-  batch_action :untag_for_home do |ids|
-    batch_action_collection.find(ids).each { |photo| photo.update(home: false) }
-    redirect_to collection_path, alert: "Des photos ont été détaggées afin ne plus être utilisées sur la page d'accueil"
-  end
-
-  batch_action :tag_for_menu do |ids|
+  batch_action :tag_for_menu, priority: 10 do |ids|
     batch_action_collection.find(ids).each { |photo| photo.update(menu: true) }
     redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur le menu de leurs catégories"
   end
 
-  batch_action :untag_for_menu do |ids|
+  batch_action :untag_for_menu, priority: 20 do |ids|
     batch_action_collection.find(ids).each { |photo| photo.update(menu: false) }
     redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur le menu de leurs catégories"
+  end
+
+  batch_action :tag_for_home, priority: 30 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: true) }
+    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil"
+  end
+
+  batch_action :untag_for_home, priority: 40 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: false) }
+    redirect_to collection_path, alert: "Des photos ont été détaggées afin ne plus être utilisées sur la page d'accueil"
+  end
+
+  batch_action :tag_for_home_and_menu, priority: 50 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: true, menu: true) }
+    redirect_to collection_path, alert: "Des photos ont été taggées afin d'être utilisées sur la page d'accueil & sur le menu de leurs catégories"
+  end
+
+  batch_action :untag_for_home_and_menu, priority: 60 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(home: false, menu: false) }
+    redirect_to collection_path, alert: "Des photos ont été détaggées afin de ne plus être utilisées sur la page d'accueil & sur le menu de leurs catégories"
+  end
+
+  batch_action :cover_for_home_and_menu, priority: 70 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: true) }
+    redirect_to collection_path, alert: "Les photos séléctionnées couvreront le menu de la page d'accueil"
+  end
+
+  batch_action :uncover_for_home_and_menu, priority: 80 do |ids|
+    batch_action_collection.find(ids).each { |photo| photo.update(cover_home: false) }
+    redirect_to collection_path, alert: "Les photos séléctionnées ne couvreront pas le menu de la page d'accueil"
   end
 
   controller do
