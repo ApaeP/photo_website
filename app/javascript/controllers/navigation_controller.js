@@ -15,7 +15,7 @@ export default class extends Controller {
     setTimeout(() => {
       body.innerHTML = ''
       this._fetchNextPage(url)
-    }, 750);
+    }, 500);
   }
 
   // useless?
@@ -41,24 +41,13 @@ export default class extends Controller {
     }
   }
 
-  _fadeIn(element) {
-    if (element.classList.contains('fade-out')) {
-      element.classList.remove('fade-out')
-      element.classList.add('fade-in')
-    } else {
-      element.classList.add('fade-in')
-    }
-  }
-
   _fetchNextPage(url) {
     fetch(`${window.location.href.match(/^.+\/\/[^\/]+/)[0]}${url}`)
       .then(data => data.text())
       .then((html) => {
         this.bodyTarget.outerHTML = html
-
-      }).then(
-          this._fadeIn(this.bodyTarget)
-        )
+        this.bodyTarget.classList.add('fade-in')
+      })
   }
 
 }
