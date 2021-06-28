@@ -37,7 +37,7 @@ export default class extends Controller {
 
   get config() {
     let base = {
-      loop: true,
+      loop: this.imagesTargets.length > 1,
       speed: parseInt(this.data.get('speed'), 10) || 750,
       effect: 'fade',
       fadeEffect: {
