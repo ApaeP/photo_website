@@ -4,7 +4,7 @@
       <ul class="swiper-wrapper m-0 p-0 list-none">
         <% category.photos.for_menu.shuffle.each_with_index do |item| %>
           <li class="swiper-slide">
-            <%= cl_image_tag item.image.key, class: 'w-full object-cover', height: 100, width: 250, 'data-swiper-target' => 'images' %>
+            <%= cl_image_tag item.image.key, class: "w-full object-#{item.contain_menu ? 'contain' : 'cover' } object-#{item.menu_position}", height: 100, width: 250, 'data-swiper-target' => 'images' %>
           </li>
         <% end %>
       </ul>

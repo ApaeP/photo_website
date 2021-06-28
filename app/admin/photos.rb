@@ -58,24 +58,28 @@ ActiveAdmin.register Photo do
       cl_image_tag(resource.image.key, height: '50', crop: :fill) if resource.image.attached?
     end
     column :name
-    column :home
-    column :cover_home
-    column :menu
     column :main_category
     column :category
     column :description
+    column :home
+    column :cover_home
+    column :menu
+    column :contain_menu
+    column :menu_position
     actions
   end
 
   show do
     attributes_table do
       row :name
-      row :description
       row :main_category
       row :category
+      row :description
       row :home
       row :cover_home
       row :menu
+      row :contain_menu
+      row :menu_position
       row :photo do
         cl_image_tag(resource.image.key, height: '300', crop: :fill) if resource.image.attached?
       end
@@ -92,6 +96,8 @@ ActiveAdmin.register Photo do
       f.input :home
       f.input :cover_home
       f.input :menu
+      f.input :contain_menu
+      f.input :menu_position
       f.input :category_id, as: :radio, collection: Category.all
       f.input :image, as: :file
     end
@@ -105,5 +111,7 @@ ActiveAdmin.register Photo do
                 :image,
                 :home,
                 :cover_home,
-                :menu
+                :contain_menu,
+                :menu,
+                :menu_position
 end
