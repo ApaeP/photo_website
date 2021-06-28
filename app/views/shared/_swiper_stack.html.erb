@@ -1,4 +1,4 @@
-<% categories&.each do |cat| %>
+<% categories&.reverse.each do |cat| %>
   <%=
     render 'shared/category_swiper',
     category: cat,
