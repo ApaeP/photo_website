@@ -9,7 +9,7 @@
             <%=
               custom_cl_image_tag item.image.key,
               cover: item.cover_home,
-              class: 'h-full w-full swiper-lazy',
+              class: "h-full w-full swiper-lazy #{"object-#{item.menu_position}" if item.cover_home}",
               height: 1440,
               'data-swiper-target' => 'images'
             %>

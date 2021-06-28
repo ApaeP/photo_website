@@ -18,5 +18,7 @@ module PhotoWebsite
     #
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
+    config.i18n.default_locale = :fr
+    config.i18n.load_path += Dir["#{Rails.root}/config/locales/**/*.{rb,yml}"]
   end
 end

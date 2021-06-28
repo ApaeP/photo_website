@@ -45,6 +45,7 @@ export default class extends Controller {
       },
       preloadImages: false,
       lazy: true,
+      watchOverflow: true
     }
 
     if (this.data.has('autoplay')) {

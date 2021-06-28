@@ -29,16 +29,21 @@
 # To learn more, please read the Rails Internationalization guide
 # available at https://guides.rubyonrails.org/i18n.html.
 
-en:
+fr:
+  'true': 'Oui'
+  'false': 'Non'
+  selected: 'euv'
   active_admin:
     batch_actions:
+      button_label: "Actions"
+      action_label: "%{title}"
       labels:
-        publish: "Publish"
-        tag_for_menu: "menu 🟢"
-        untag_for_menu: "menu 🔴"
-        tag_for_home: "home 🟢"
-        untag_for_home: "home 🔴"
-        tag_for_home_and_menu: "home & menu 🟢"
-        untag_for_home_and_menu: "home & menu 🔴"
-        cover_for_home_and_menu: "Cover home & menu 🟢"
-        uncover_for_home_and_menu: "Cover home & menu 🔴"
+        publish: "Publier"
+        tag_for_menu: "Menu 🟢"
+        untag_for_menu: "Menu 🔴"
+        tag_for_home: "Accueil 🟢"
+        untag_for_home: "Accueil 🔴"
+        tag_for_home_and_menu: "Accueil & menu 🟢"
+        untag_for_home_and_menu: "Accueil & menu 🔴"
+        cover_for_home_and_menu: "Couvrir accueil & menu 🟢"
+        uncover_for_home_and_menu: "Couvrir accueil & menu 🔴"
