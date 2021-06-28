@@ -25,29 +25,33 @@ export default class extends Controller {
 
   nextSlide(event) {
     event.preventDefault()
-    this.instance.slideNext(parseInt(this.data.get('speed'), 10) || 750)
+    this.instance.slideNext(parseInt(this.data.get('speed'), 10) || 750, true)
     this._displayName()
   }
 
   prevSlide(event) {
     event.preventDefault()
-    this.instance.slidePrev(parseInt(this.data.get('speed'), 10) || 750)
+    this.instance.slidePrev(parseInt(this.data.get('speed'), 10) || 750, true)
     this._displayName()
   }
 
   get config() {
     let base = {
-      effect: 'fade',
       loop: true,
+      speed: parseInt(this.data.get('speed'), 10) || 750,
+      effect: 'fade',
+      fadeEffect: {
+        crossFade: true
+      },
       preloadImages: false,
       lazy: true,
-      speed: parseInt(this.data.get('speed'), 10) || 750
     }
 
     if (this.data.has('autoplay')) {
-      base.autoplay = { delay: this.data.get('autoplay') }
-    } else {
-      base.autoplay = false
+      base.autoplay = {
+        delay: parseInt(this.data.get('autoplay'), 10),
+        disableOnInteraction: true
+      }
     }
 
     return base
@@ -60,21 +64,15 @@ export default class extends Controller {
           this.prevSlide(event)
         } else if (event.key === 'ArrowRight') {
           this.nextSlide(event)
-        };
-      });
+        }
+      })
     }
   }
 
   _displayName() {
     if (this.instance.slides.length > 0) {
       let name = this.instance.slides[this.instance.activeIndex].dataset.name
-      if (this.hasNameTarget) {
-        if (name != null) {
-          this.nameTarget.innerText = name
-        } else {
-          this.nameTarget.innerText = ''
-        }
-      }
+      this.hasNameTarget && (this.nameTarget.innerText = this.hasNameTarget ? name : '')
     }
   }
 
