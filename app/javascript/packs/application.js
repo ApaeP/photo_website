@@ -2,6 +2,7 @@ import Rails from "@rails/ujs"
 import Turbolinks from "turbolinks"
 import * as ActiveStorage from "@rails/activestorage"
 import "channels"
+import "controllers"
 
 import Swiper, { Navigation, Pagination, Autoplay, EffectFade, Lazy } from 'swiper'
 Swiper.use([ Navigation, Pagination, Autoplay, EffectFade, Lazy ])
@@ -17,4 +18,3 @@ document.addEventListener('turbolinks:load', () => {
 
 })
 
-import "controllers"

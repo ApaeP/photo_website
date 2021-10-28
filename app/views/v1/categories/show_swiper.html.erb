@@ -13,9 +13,11 @@
           %>
         <%# end %>
       </div>
-      <div class="w-8/12 text-center flex flex-col justify-center text-gray-100" data-swiper-target="name">CACA</div>
+      <div id="lol" class="w-8/12 text-center text-white flex flex-col justify-center" data-swiper-target="name"></div>
       <div class="w-2/12 flex justify-end">
-        <%= stimulus_link_to category_path(@category), css_classes: 'h-full w-3/6 group flex align-center justify-center items-center' do %>
+        <%= stimulus_link_to category_path(@category),
+            css_classes: 'h-full w-3/6 group flex align-center justify-center items-center',
+            data_swiper_target: 'closeLink' do %>
           <%=
             inline_svg_pack_tag "images/cross.svg",
             class: 'h-2/6 w-2/6',
