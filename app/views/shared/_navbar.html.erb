@@ -1,6 +1,6 @@
 <nav class="flex justify-between bg-white relative z-50 h-20">
   <div class="px-5 xl:px-12 py-6 flex w-full items-center">
-    <%= stimulus_link_to root_path do %>
+    <%= stimulus_link_to url: root_path do %>
       <%=
         inline_svg_pack_tag "images/logo.svg",
         class: 'h-10 w-8',
@@ -11,15 +11,17 @@
       %>
     <% end %>
     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12 absolute left-2/4 transform -translate-x-2/4">
-      <li><a class="hover:text-gray-200" href="#">Accueil</a></li>
+      <li>
+        <%= stimulus_link_to str: "Accueil", url: root_path, class: "hover:text-gray-700" %>
+      </li>
       <% MainCategory.all.each do |main_cat| %>
       <li class="group relative">
-        <%= stimulus_link_to main_category_path(main_cat) do %>
+        <%= stimulus_link_to url: main_category_path(main_cat) do %>
           <%= main_cat.title %>
         <% end %>
         <div class="group-hover:block hidden absolute pt-7 bg-white left-2/4 transform -translate-x-2/4 pb-3 min-w-">
           <% main_cat.categories.each do |cat| %>
-            <%= stimulus_link_to category_path(cat), css_classes: "dropdown-element" do %>
+            <%= stimulus_link_to url: category_path(cat), class: "dropdown-element" do %>
               <%= cat.title %>
             <% end -%>
           <% end %>
