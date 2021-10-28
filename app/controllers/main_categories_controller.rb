@@ -2,7 +2,7 @@ class MainCategoriesController < ApplicationController
   before_action :set_main_category, only: [:show]
 
   def show
-    @back_url = '/main_categories'
+    # @back_url = '/main_categories'
     @categories = @main_category.categories
   end
 

@@ -1,6 +1,7 @@
-<div class="height-full-navbar-footer bg-black"
+<section class="height-full-navbar-footer bg-black"
       data-controller="swiper"
-      data-swiper-autoplay="4000">
+      data-swiper-autoplay="4000"
+      data-swiper-speed="4000">
   <div class="swiper-container h-full filter brightness-75" data-swiper-target="container">
     <ul class="swiper-wrapper list-none">
       <% Photo.for_home.shuffle.each_with_index do |item| %>
@@ -18,7 +19,7 @@
       <% end %>
     </ul>
   </div>
-  <%= stimulus_link_to main_categories_path do %>
+  <%= stimulus_link_to url: main_categories_path do %>
     <div class="absolute rounded-full backdrop-blur h-1/2 w-1/2 top-1/4 left-1/4
                 flex flex-col justify-center z-40 opacity-70 transition-all
                 hover:opacity-100 duration-300 cursor-pointer">
@@ -40,4 +41,4 @@
       </h6>
     </div>
   <% end %>
-</div>
+</section>

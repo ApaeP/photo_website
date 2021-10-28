@@ -1,0 +1,19 @@
+<section class="height-full-navbar-footer flex px-3 py-6 whitespace-nowrap overflow-x-scroll hide-scrollbar">
+  <% @photos.reverse.each do |photo| %>
+    <div class="group relative mx-3 h-full">
+      <%= cl_image_tag photo.image.key, class: 'h-full max-w-max' %>
+      <div class="group-hover:opacity-100 opacity-0 transition duration-500 absolute top-0 left-0 w-full h-full flex flex-col justify-between">
+        <% if photo.name.present? %>
+          <div class="text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
+            <p class="whitespace-normal"><%= photo.name&.upcase %></p>
+          </div>
+        <% end %>
+        <% if photo.description.present? %>
+          <div class="text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
+            <p class="whitespace-normal"><%= photo.description %></p>
+          </div>
+        <% end %>
+      </div>
+    </div>
+  <% end %>
+</section>
