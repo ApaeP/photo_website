@@ -1,14 +1,14 @@
-      <%= stimulus_link_to @back_url, css_classes: 'opacity-70 hover:opacity-100 transition-all duration-300' do %>
-        <%=
-          inline_svg_pack_tag "images/logo.svg",
-          class: 'h-40 w-full',
-          data: {
-            controller: 'inline-svg',
-            'svg-class' => 'fill-current text-white'
-          }
-        %>
-      <% end %>
-  <div class="min-h-screen flex flex-col justify-center">
+<%= stimulus_link_to @back_url, css_classes: 'opacity-70 hover:opacity-100 transition-all duration-300' do %>
+  <%=
+    inline_svg_pack_tag "images/logo.svg",
+    class: 'h-40 w-full',
+    data: {
+      controller: 'inline-svg',
+      'svg-class' => 'fill-current text-white'
+    }
+  %>
+<% end %>
+<div class="min-h-screen flex flex-col justify-center">
   <div class="flex flex-wrap justify-around p-12 mx-auto">
     <% @photos.each_with_index do |photo, index| %>
       <div class="group w-3/12 relative m-4 flex flex-col justify-center">

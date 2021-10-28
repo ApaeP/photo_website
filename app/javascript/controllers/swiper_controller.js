@@ -2,7 +2,7 @@ import { Controller } from "stimulus"
 import Swiper from 'swiper'
 
 export default class extends Controller {
-  static targets = ["container", "setHeight", "images", "buttonPrev", "buttonNext", "name"]
+  static targets = ["container", "setHeight", "images", "buttonPrev", "buttonNext", "name", "closeLink"]
 
   connect() {
     this.init()
@@ -61,10 +61,13 @@ export default class extends Controller {
   _keyNav() {
     if (this.hasButtonPrevTarget) {
       document.addEventListener('keydown', (event) => {
+        console.log(event.key)
         if (event.key === 'ArrowLeft') {
           this.prevSlide(event)
         } else if (event.key === 'ArrowRight') {
           this.nextSlide(event)
+        } else if (event.key === 'Escape') {
+          this.closeLinkTarget.click()
         }
       })
     }
