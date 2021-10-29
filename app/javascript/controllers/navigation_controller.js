@@ -1,11 +1,11 @@
 import { Controller } from "stimulus"
+import Rails from "@rails/ujs"
+import Swal from 'sweetalert2'
 
 export default class extends Controller {
   static targets = ["body", "links"]
 
-  connect() {
-    // this._appendPreloadLinks()
-  }
+  connect() { }
 
   visit(event) {
     const body = this.bodyTarget
@@ -29,30 +29,26 @@ export default class extends Controller {
   _fetchNextPage(url) {
     const nextUrl = `${window.location.href.match(/^.+\/\/[^\/]+/)[0]}${url}`
     // document.title(TODO)
+    var that = this
     fetch(nextUrl)
       .then(data => data.text())
       .then((html) => {
         this._setCurrentUrl(url)
         this.bodyTarget.outerHTML = html
         this.bodyTarget.classList.add('fade-in')
-      })
+      }).catch(function(error) {
+        Swal.fire({
+          title: '#404',
+          text: `This link seems to be broken... ERROR: ${error}`,
+          icon: 'question',
+          confirmButtonText: 'Return to homepage'
+        }).then(function() {
+          window.location = `${window.location.href.match(/^.+\/\/[^\/]+/)[0]}/`
+        })
+    });
   }
 
   _setCurrentUrl(url) {
     window.history.pushState('', '', url);
   }
-
-  // useless?
-  // _appendPreloadLinks() {
-  //   this.linksTargets.forEach((stimulus_link) => {
-  //     const head = document.querySelector('head')
-  //     head.append(
-  //       `<link
-  //         href="${stimulus_link.dataset.url}"
-  //         rel="preload"
-  //         crossorigin="anonymous"
-  //       />`
-  //     )
-  //   })
-  // }
 }
