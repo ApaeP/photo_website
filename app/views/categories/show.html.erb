@@ -1,4 +1,4 @@
-<section class="height-full-navbar-footer flex px-3 py-6 whitespace-nowrap overflow-x-scroll hide-scrollbar">
+<section class="height-full-navbar-footer flex px-3 py-6 whitespace-nowrap overflow-x-scroll hide-scrollbar" data-controller="scroll" data-action="wheel->scroll#scroll">
   <% @photos.reverse.each do |photo| %>
     <div class="group relative mx-3 h-full">
       <%= cl_image_tag photo.image.key, class: 'h-full max-w-max' %>
