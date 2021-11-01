@@ -1,25 +1,36 @@
 <section class="height-full-navbar-footer flex px-3 py-6 whitespace-nowrap">
   <% @categories.each do |cat| %>
-    <div class="w-full px-3 relative">
-      <%= cl_image_tag cat.photos.first.image.key, class: 'object-cover w-full h-full' %>
-      <%= stimulus_link_to url: cat.show_url, css_classes: "relative" do %>
-        <div class="absolute transform left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4
-                    rounded-full backdrop-blur h-1/2 w-1/2
-                    flex flex-col justify-center z-40 opacity-80 transition-all
-                    hover:opacity-100 duration-300 cursor-pointer">
-          <div class="flex justify-center">
-            <%=
-              inline_svg_pack_tag "images/logo.svg",
-              class: 'h-10 md:h-20',
-              data: {
-                controller: 'inline-svg',
-                'svg-class' => 'fill-current text-white'
-              }
-            %>
+    <div class="w-1/<%= @categories.count %> px-3 relative">
+      <%= stimulus_link_to url: cat.show_url, class: "h-full w-full" do %>
+        <div class=" h-full w-full" data-controller="swiper" data-swiper-autoplay="2000">
+          <div class="swiper-container max-h-full h-full filter brightness-75" data-swiper-target="container">
+            <ul class="swiper-wrapper m-0 p-0 list-none h-full">
+              <% cat.photos.for_menu.shuffle.each do |item| %>
+                <li class="swiper-slide h-full">
+                  <%= cl_image_tag item.image.key, class: "w-full h-full object-cover object-#{item.menu_position}", height: 100, width: 250, 'data-swiper-target' => 'images' %>
+                  <%#= cl_image_tag item.image.key, class: "w-full object-#{item.contain_menu ? 'contain' : 'cover' } object-#{item.menu_position}", height: 100, width: 250, 'data-swiper-target' => 'images' %>
+                </li>
+              <% end %>
+            </ul>
           </div>
-          <span class="text-3xl md:text-4xl text-center font-thin text-white mt-1 md:mt-3">
-            <%= cat.title.upcase %>
-          </span>
+          <div class="absolute transform left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4
+                      rounded-full backdrop-blur h-1/2 w-1/2
+                      flex flex-col justify-center z-40 opacity-80 transition-all
+                      hover:opacity-100 duration-300 cursor-pointer">
+            <div class="flex justify-center">
+              <%=
+                inline_svg_pack_tag "images/logo.svg",
+                class: 'h-10 md:h-20',
+                data: {
+                  controller: 'inline-svg',
+                  'svg-class' => 'fill-current text-white'
+                }
+              %>
+            </div>
+            <span class="text-3xl md:text-4xl text-center font-thin text-white mt-1 md:mt-3">
+              <%= cat.title.upcase %>
+            </span>
+          </div>
         </div>
       <% end %>
     </div>
