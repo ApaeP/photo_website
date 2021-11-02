@@ -4,7 +4,7 @@
       data-swiper-speed="4000">
   <div class="swiper-container h-full filter brightness-75" data-swiper-target="container">
     <ul class="swiper-wrapper list-none">
-      <% Photo.for_home.shuffle.each_with_index do |item| %>
+      <% @photos.each_with_index do |item| %>
         <li class="swiper-slide relative">
           <div class="bg-black top-0 left-0 right-0 bottom-0 w-full h-full">
             <%=

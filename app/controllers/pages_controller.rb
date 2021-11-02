@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
   def home
-    @categories = MainCategory.all
+    @photos = Photo.for_home.with_attached_image.shuffle
   end
 end

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-  # before_action :set_return_path
+  before_action :set_navbar_variables
   # before_action :set_back_url
 
   # def set_back_url
@@ -11,8 +11,7 @@ class ApplicationController < ActionController::Base
 
   private
 
-  # def set_return_path
-  #   @return_path = '/'
-  #   @back_url = '/'
-  # end
+  def set_navbar_variables
+    @main_categories = MainCategory.all.includes(:categories)
+  end
 end

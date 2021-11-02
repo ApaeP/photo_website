@@ -5,10 +5,9 @@
         <div class=" h-full w-full" data-controller="swiper" data-swiper-autoplay="2000">
           <div class="swiper-container max-h-full h-full filter brightness-75" data-swiper-target="container">
             <ul class="swiper-wrapper m-0 p-0 list-none h-full">
-              <% cat.photos.for_menu.shuffle.each do |item| %>
+              <% cat.photos_for_menu.shuffle.each do |item| %>
                 <li class="swiper-slide h-full">
                   <%= cl_image_tag item.image.key, class: "w-full h-full object-cover object-#{item.menu_position}", height: 100, width: 250, 'data-swiper-target' => 'images' %>
-                  <%#= cl_image_tag item.image.key, class: "w-full object-#{item.contain_menu ? 'contain' : 'cover' } object-#{item.menu_position}", height: 100, width: 250, 'data-swiper-target' => 'images' %>
                 </li>
               <% end %>
             </ul>
