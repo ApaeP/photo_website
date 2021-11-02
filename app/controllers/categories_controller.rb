@@ -3,7 +3,7 @@ class CategoriesController < ApplicationController
 
   def show
     @back_url = "/main_categories/#{@category.main_category.id}"
-    @photos = photos
+    @photos = photos.includes(image_attachment: :blob)
   end
 
   def show_swiper
