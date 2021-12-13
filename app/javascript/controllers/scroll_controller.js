@@ -22,12 +22,10 @@ export default class extends Controller {
   }
 
   scrollRight() {
-    console.log('scroll to the right')
     this.element.scrollLeft += 4
   }
 
   scrollLeft() {
-    console.log('scroll to the left')
     this.element.scrollLeft -= 4
   }
 }
