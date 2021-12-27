@@ -29,7 +29,7 @@
       </li>
       <% end %>
 
-      <li><a class="hover:text-gray-200" href="#">Informations</a></li>
+      <li><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
       <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
     </ul>
     <div class="hidden xl:flex items-center space-x-5 absolute right-12">
