@@ -14,11 +14,15 @@
   </head>
 
   <body class="" data-controller="navigation">
-    <div class="stimulus-body" data-navigation-target="body">
-      <%= render 'shared/navbar' %>
-      <%= render 'shared/flashes' %>
-      <%= yield %>
-      <%= render 'shared/footer' %>
+    <%= render 'shared/navbar' %>
+
+    <div class="height-full-navbar-footer">
+      <div class="stimulus-body" id="body" data-navigation-target="body">
+        <%= render 'shared/flashes' %>
+        <%= yield %>
+      </div>
     </div>
+
+    <%= render 'shared/footer' %>
   </body>
 </html>

@@ -29,14 +29,19 @@ export default class extends Controller {
   _fetchNextPage(url) {
     const nextUrl = `${window.location.href.match(/^.+\/\/[^\/]+/)[0]}${url}`
     // document.title(TODO)
-    var that = this
     fetch(nextUrl)
       .then(data => data.text())
       .then((html) => {
         this._setCurrentUrl(url)
-        this.bodyTarget.outerHTML = html
+
+        var el = document.createElement('html')
+        el.innerHTML = html
+        const newBody = el.querySelector('#body').outerHTML
+
+        this.bodyTarget.outerHTML = newBody
         this.bodyTarget.classList.add('fade-in')
       }).catch(function(error) {
+        window.railsError = error
         Swal.fire({
           title: '#404',
           text: `This link seems to be broken... ERROR: ${error}`,
