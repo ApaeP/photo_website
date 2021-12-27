@@ -25,7 +25,7 @@ export default class extends Controller {
     this._setCurrentPhoto(parseInt(event.currentTarget.dataset.id, 10))
     this.modalTarget.classList.remove('hidden')
     this.modalTarget.classList.add('appear-from-top')
-    this._currentPhoto().classList.add('appear-from-top')
+    this._currentPhoto().classList.add('appear')
   }
 
   hide() {
@@ -80,7 +80,7 @@ export default class extends Controller {
   }
 
   _clean(element) {
-    element.classList.remove('appear-from-top', 'disappear-to-top', 'disappear-to-right', 'appear-from-right', 'appear-from-left', 'disappear-to-left')
+    element.classList.remove('appear','appear-from-top', 'disappear-to-top', 'disappear-to-right', 'appear-from-right', 'appear-from-left', 'disappear-to-left')
     // element.classList.add('hidden')
   }
 
