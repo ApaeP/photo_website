@@ -30,7 +30,9 @@
       <% end %>
 
       <li><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
-      <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
+      <% if user_signed_in? %>
+        <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
+      <% end %>
     </ul>
     <div class="hidden xl:flex items-center space-x-5 absolute right-12">
 <!--       <a class="flex items-center text-2xl hover:text-gray-700" href="#">
