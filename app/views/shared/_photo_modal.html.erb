@@ -1,0 +1,18 @@
+<div class="modal absolute top-0 left-0 bottom-0 right-0 w-screen h-screen z-60 flex flex-col justify-center hidden"
+      data-modal-target="modal"
+          style="background: rgb(12, 12, 18);">
+  <div class="w-full h-full relative">
+    <div id="close-modal" data-action="click->modal#hide">
+      <i class="fas fa-times"></i>
+    </div>
+    <div class="navigate-modal left" data-action="click->modal#previous">
+      <i class="fas fa-angle-left"></i>
+    </div>
+    <div class="navigate-modal right" data-action="click->modal#next">
+      <i class="fas fa-angle-right"></i>
+    </div>
+    <% photos.each_with_index do |photo, i| %>
+      <%= cl_image_tag photo.image.key, class: "elements w-full h-full object-contain absolute", data: { 'modal-target' => 'element' } %>
+    <% end %>
+  </div>
+</div>

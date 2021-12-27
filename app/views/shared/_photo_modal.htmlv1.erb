@@ -1,0 +1,15 @@
+<div class="absolute top-0 left-0 bottom-0 right-0 w-screen h-screen bg-white z-60 flex flex-col justify-center">
+  <div class="flex justify-between">
+    <div class="w-full lg:w-2/4 h-auto p-8 lg:pr-4">
+      <%= cl_image_tag photo.image.key, class: 'w-full h-full object-contain' %>
+    </div>
+    <div class="h-full hidden lg:flex w-2/4 p-8 flex-col justify-between lg:pl-4">
+      <p class="text-3xl text-end w-full text-right uppercase font-extralight">
+        <%= photo.name %>
+      </p>
+      <p class="text-justify font-extralight">
+        <%= photo.description %>
+      </p>
+    </div>
+  </div>
+</div>

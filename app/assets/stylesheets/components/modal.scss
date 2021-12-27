@@ -1,0 +1,169 @@
+.modal {
+  overflow: hidden;
+  .elements {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+}
+
+// background: rgb(0,0,0);
+// background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 50%, rgba(0,0,0,0.2) 100%);
+#close-modal {
+// w-full top-0 h-1/6 absolute z-70 cursor-pointer hover:bg-gray-200 hover:opacity-20 transition-all ease-out duration-700
+  width: 100%;
+  position: absolute;
+  top: 0;
+  height: 15%;
+  z-index: 70;
+  cursor: pointer;
+  transition: all ease 350ms;
+  opacity: 0;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.2) 100%);
+  &:hover {
+    opacity: 1;
+  }
+}
+
+.navigate-modal {
+  &.left {
+    width: 33%;
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: calc(100vh);// - 15%);
+    z-index: 69;
+    cursor: pointer;
+    transition: all ease 350ms;
+    opacity: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(270deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.2) 100%);
+    i {
+      width: 30%;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+  &.right {
+    width: 33%;
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    height: 100vh;
+    z-index: 69;
+    cursor: pointer;
+    transition: all ease 350ms;
+    opacity: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    background: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.2) 75%, rgba(0,0,0,0.2) 100%);
+    i {
+      width: 30%;
+      margin: 0 0 0 auto;
+    }
+    &:hover {
+      opacity: 1;
+    }
+  }
+}
+
+.appear-from-top {
+  animation: slideFromTop 750ms forwards ease;
+}
+
+.appear-from-top {
+  animation: slideFromTop 750ms forwards ease;
+}
+.appear-from-right {
+  animation: slideFromRight 750ms forwards ease;
+}
+.appear-from-left {
+  animation: slideFromLeft 750ms forwards ease;
+}
+.disappear-to-top {
+  animation: slideToTop 750ms forwards ease;
+}
+.disappear-to-left {
+  animation: slideToLeft 750ms forwards ease;
+}
+.disappear-to-right {
+  animation: slideToRight 750ms forwards ease;
+}
+
+@keyframes slideFromTop {
+  0% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideFromRight {
+  0% {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideFromLeft {
+  0% {
+    opacity: 0;
+    transform: translate(-100%, 0);
+  }
+  100% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+}
+
+@keyframes slideToTop {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(0, -50%);
+  }
+}
+
+@keyframes slideToLeft {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(-100%, 0);
+  }
+}
+
+@keyframes slideToRight {
+  0% {
+    opacity: 1;
+    transform: translate(0, 0);
+  }
+  100% {
+    opacity: 0;
+    transform: translate(100%, 0);
+  }
+}
