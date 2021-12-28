@@ -31,6 +31,7 @@
 
       <li><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
       <% if user_signed_in? %>
+        <li><%= link_to "Admin", admin_root_path %></li>
         <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
       <% end %>
     </ul>
@@ -43,7 +44,7 @@
     <div class="md:hidden absolute transform -translate-x-full left-full h-full w-20 items-center flex justify-center cursor-pointer"
          data-action="click->navbar#togglePhoneMenu">
       <div class="phone-menu-icon">
-        <input class="menu-icon__cheeckbox" type="checkbox" data-navbar-target="togglePhoneMenuButton" />
+        <input class="phone-menu-checkbox" type="checkbox" data-navbar-target="togglePhoneMenuButton" />
         <div>
           <span></span>
           <span></span>
@@ -76,6 +77,9 @@
           <%= stimulus_link_to str: 'Informations', url: informations_path %>
         </li>
         <% if user_signed_in? %>
+          <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
+            <%= link_to "Admin", admin_root_path %>
+          </li>
           <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
             <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
           </li>

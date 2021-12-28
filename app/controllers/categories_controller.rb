@@ -3,12 +3,12 @@ class CategoriesController < ApplicationController
 
   def show
     @back_url = "/main_categories/#{@category.main_category.id}"
-    @photos = photos.includes(image_attachment: :blob)
+    @photos = photos.includes(image_attachment: :blob).reverse
   end
 
   def show_swiper
     @back_url = "/categories/#{@category.id}"
-    @photos = photos.rotate(params[:rotate].to_i)
+    @photos = photos.rotate(params[:rotate].to_i).reverse
   end
 
   private

@@ -1,4 +1,5 @@
 ActiveAdmin.register Photo do
+  reorderable
   menu priority: 40, label: 'Photos'
 
   filter :main_category_id, as: :check_boxes, collection: MainCategory.all
