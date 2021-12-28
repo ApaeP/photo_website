@@ -10,6 +10,9 @@
     <div class="navigate-modal right" data-action="click->modal#next">
       <i class="fas fa-angle-right"></i>
     </div>
+    <div id="close-modal-bottom" class="md:hidden" data-action="click->modal#hide">
+      <i class="fas fa-times"></i>
+    </div>
     <% photos.each_with_index do |photo, i| %>
       <div class="elements w-full h-full object-contain absolute px-4 py-12" data-modal-target="element">
 
