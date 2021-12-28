@@ -45,6 +45,7 @@ group :development do
   gem 'spring'
   gem 'pry-byebug'
   gem 'pry-rails'
+  gem 'annotate'
 end
 
 group :test do
@@ -65,3 +66,5 @@ gem 'devise'
 gem 'simple_form'
 gem 'activeadmin'
 gem 'inline_svg'
+gem 'acts_as_list'
+gem 'activeadmin_reorderable'
