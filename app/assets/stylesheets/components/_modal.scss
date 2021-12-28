@@ -17,16 +17,16 @@
   height: 15%;
   z-index: 70;
   cursor: pointer;
-  transition: all ease 350ms;
-  opacity: 0;
-  color: white;
+  // transition: background-color ease 1350ms;
   display: flex;
-  flex-direction: column;
-  justify-content: center;
-  text-align: center;
-  background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 100%);
+  justify-content: end;
+  text-align: end;
+  // background: linear-gradient(0deg, rgba(0,0,0,0) 0%, rgba(0,0,0,0.1) 75%, rgba(0,0,0,0.1) 100%);
   &:hover {
-    opacity: 1;
+    // background-color:  rgba(255,255,255,0.4);
+  }
+  i {
+    font-size: 2rem;
   }
 }
 

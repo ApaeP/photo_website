@@ -1,8 +1,13 @@
 <div class="modal absolute top-0 left-0 bottom-0 right-0 w-screen h-screen z-60 flex flex-col justify-center hidden bg-white"
       data-modal-target="modal">
   <div class="w-full h-full relative flex flex-col justify-center">
-    <div id="close-modal" data-action="click->modal#hide">
-      <i class="fas fa-times"></i>
+    <div id="close-modal" data-action="click->modal#hide" title="retour">
+      <!-- <i class="fas fa-times"></i> -->
+      <svg  class="h-9 w-9 m-4"
+            xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="100%" height="100%" viewBox="0 0 50 50" style=" fill:#000000;">
+        <path d="M 7.71875 6.28125 L 6.28125 7.71875 L 23.5625 25 L 6.28125 42.28125 L 7.71875 43.71875 L 25 26.4375 L 42.28125 43.71875 L 43.71875 42.28125 L 26.4375 25 L 43.71875 7.71875 L 42.28125 6.28125 L 25 23.5625 Z">
+        </path>
+      </svg>
     </div>
     <div class="navigate-modal left" data-action="click->modal#previous">
       <i class="fas fa-angle-left"></i>

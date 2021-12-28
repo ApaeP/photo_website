@@ -15,7 +15,6 @@ export default class extends Controller {
         }
       }
     })
-    this.detectTouch()
   }
 
   display(event) {
