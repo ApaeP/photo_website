@@ -10,6 +10,7 @@ export default class extends Controller {
   visit(event) {
     const body = this.bodyTarget
     const url = event.currentTarget.dataset.url
+    if (window.location.href === `${window.location.href.match(/^.+\/\/[^\/]+/)[0]}${url}`) { return }
     this._fadeOut(body)
     setTimeout(() => {
       body.innerHTML = ''
