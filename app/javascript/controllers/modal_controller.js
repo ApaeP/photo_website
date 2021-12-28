@@ -58,7 +58,7 @@ export default class extends Controller {
 
   _setCurrentPhoto(id) {
     this.currentPhotoId = id
-    this.currentPhoto = this.elementTargets[this.currentPhotoId]
+    this.currentPhoto = this.elementTargets[id]
     if (this.currentPhotoId + 1 === this.elementTargets.length) {
       this.nextPhotoId = 0
       this.previousPhotoId = this.currentPhotoId - 1
@@ -74,6 +74,7 @@ export default class extends Controller {
   }
 
   navigateTo(event) {
+    if (this.currentPhoto === this.elementTargets[parseInt(event.currentTarget.dataset.id, 10)]) { return }
     this.elementTargets.forEach((el) => {
       this._clean(el)
       el.style.transform = 'translate(100%, 0)';
