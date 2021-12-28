@@ -1,7 +1,7 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["modal", "element"]
+  static targets = ["modal", "element" ]
 
   connect() {
     document.addEventListener('keydown', (e) => {
@@ -9,14 +9,13 @@ export default class extends Controller {
         if (e.key === 'Escape' || e.keyCode == 32) {
           this.hide()
         } else if (e.key === "ArrowRight") {
-          console.log('right')
           this.next()
         } else if (e.key === "ArrowLeft") {
-          console.log('left')
           this.previous()
         }
       }
     })
+    this.detectTouch()
   }
 
   display(event) {
@@ -25,7 +24,7 @@ export default class extends Controller {
     this._setCurrentPhoto(parseInt(event.currentTarget.dataset.id, 10))
     this.modalTarget.classList.remove('hidden')
     this.modalTarget.classList.add('appear-from-top')
-    this._currentPhoto().classList.add('appear')
+    this.currentPhoto.classList.add('appear')
   }
 
   hide() {
@@ -75,13 +74,49 @@ export default class extends Controller {
     this.previousPhoto = this.elementTargets[this.previousPhotoId]
   }
 
-  _currentPhoto() {
-    return this.elementTargets[this.currentPhotoId]
+  navigateTo(event) {
+    this.elementTargets.forEach((el) => {
+      this._clean(el)
+      el.style.transform = 'translate(100%, 0)';
+    })
+    this.currentPhoto.classList.add('disappear')
+    this._setCurrentPhoto(parseInt(event.currentTarget.dataset.id, 10))
+    this.currentPhoto.classList.add('appear')
+  }
+
+  showMiniature(event) {
+    const element = event.currentTarget.parentElement.firstElementChild
+    element.classList.remove('hidden')
+    element.classList.remove('disappear-without-translate')
+    element.classList.add('appear-without-translate')
+    this._ensureMiniaturePreviewVisibility(element)
+
+  }
+
+  hideMiniature(event) {
+    const element = event.currentTarget.parentElement.firstElementChild
+    element.classList.remove('appear-without-translate')
+    element.classList.add('disappear-without-translate')
+    setTimeout(() => {
+      element.classList.add('hidden')
+    }, 500)
   }
 
   _clean(element) {
-    element.classList.remove('appear','appear-from-top', 'disappear-to-top', 'disappear-to-right', 'appear-from-right', 'appear-from-left', 'disappear-to-left')
-    // element.classList.add('hidden')
+    element.classList.remove('appear', 'disappear','appear-from-top', 'disappear-to-top', 'disappear-to-right', 'appear-from-right', 'appear-from-left', 'disappear-to-left')
   }
 
+  _ensureMiniaturePreviewVisibility(element) {
+    const elementPosition = element.getBoundingClientRect()
+    const offSightRight = Math.round(elementPosition.right - window.innerWidth)
+    const offSightLeft = Math.round(-elementPosition.left)
+
+    if (offSightLeft > 0) {
+      const newValue = element.style.transform.replace(/-\d.%/, `calc(-${element.style.transform.match(/(\d.)/)[0]}% + ${offSightLeft}px + 0.5rem)`)
+      element.style.transform = newValue
+    } else if (offSightRight > 0) {
+      const newValue = element.style.transform.replace(/-\d.%/, `calc(-${element.style.transform.match(/(\d.)/)[0]}% - ${offSightRight}px - 0.5rem)`)
+      element.style.transform = newValue
+    }
+  }
 }
