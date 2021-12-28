@@ -1,4 +1,4 @@
-<nav class="flex justify-between bg-white relative z-50 h-20">
+<nav class="flex justify-between bg-white relative z-50 h-20" data-controller="navbar">
   <div class="px-5 xl:px-12 py-6 flex w-full items-center">
     <%= stimulus_link_to url: root_path do %>
       <%=
@@ -15,18 +15,18 @@
         <%= stimulus_link_to str: "Accueil", url: root_path, class: "hover:text-gray-700" %>
       </li>
       <% @main_categories.each do |main_cat| %>
-      <li class="group relative">
-        <%= stimulus_link_to url: main_category_path(main_cat) do %>
-          <%= main_cat.title %>
-        <% end %>
-        <div class="group-hover:block hidden absolute pt-7 bg-white left-2/4 transform -translate-x-2/4 pb-3 min-w-">
-          <% main_cat.categories.each do |cat| %>
-            <%= stimulus_link_to url: category_path(cat), class: "dropdown-element" do %>
-              <%= cat.title %>
-            <% end -%>
+        <li class="group relative">
+          <%= stimulus_link_to url: main_category_path(main_cat) do %>
+            <%= main_cat.title %>
           <% end %>
-        </div>
-      </li>
+          <div class="group-hover:block hidden absolute pt-7 bg-white left-2/4 transform -translate-x-2/4 pb-3 min-w-">
+            <% main_cat.categories.each do |cat| %>
+              <%= stimulus_link_to url: category_path(cat), class: "dropdown-element" do %>
+                <%= cat.title %>
+              <% end -%>
+            <% end %>
+          </div>
+        </li>
       <% end %>
 
       <li><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
@@ -39,22 +39,50 @@
         <i class="far fa-envelope"></i>
       </a> -->
     </div>
+
+    <div class="md:hidden absolute transform -translate-x-full left-full h-full w-20 items-center flex justify-center cursor-pointer"
+         data-action="click->navbar#togglePhoneMenu">
+      <div class="phone-menu-icon">
+        <input class="menu-icon__cheeckbox" type="checkbox" data-navbar-target="togglePhoneMenuButton" />
+        <div>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+    <div class="hidden height-full-navbar-footer absolute w-full left-0 bottom-0"
+         style="transform: translateY(100%); background: rgba(255, 255, 255, 0.9);"
+         data-navbar-target="phoneMenu"
+         data-action="click->navbar#hidePhoneMenu">
+      <ul class="text-right px-10">
+        <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
+          <%= stimulus_link_to str: "Accueil", url: root_path %>
+        </li>
+        <% @main_categories.each do |main_cat| %>
+          <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
+            <%= stimulus_link_to url: main_category_path(main_cat) do %>
+              <%= main_cat.title %>
+            <% end %>
+          </li>
+          <% main_cat.categories.each do |cat| %>
+            <li class="category cursor-pointer font-extralight uppercase my-1 tracking-wider">
+                <%= stimulus_link_to url: category_path(cat), class: "" do %>
+                  <%= cat.title %>
+                <% end -%>
+            </li>
+          <% end %>
+        <% end %>
+        <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
+          <%= stimulus_link_to str: 'Informations', url: informations_path %>
+        </li>
+        <% if user_signed_in? %>
+          <li class="main-category cursor-pointer text-xl mt-12 uppercase font-light tracking-widest">
+            <%= link_to "Déconnexion", destroy_user_session_path, method: :delete %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
   </div>
 
-  <!-- Responsive navbar -->
-  <!-- <a class="navbar-burger self-center mr-12 xl:hidden" href="#">
-    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 hover:text-gray-200" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
-    </svg>
-  </a> -->
-<!--   <ul class="menu">
-    <li><a class="menuItem" href="#">Home</a></li>
-    <li><a class="menuItem" href="#">Profile</a></li>
-    <li><a class="menuItem" href="#">About</a></li>
-    <li><a class="menuItem" href="#">Contacts</a></li>
-  </ul>
-  <button class="hamburger">
-    <i class="menuIcon material-icons">menu</i>
-    <i class="closeIcon material-icons">close</i>
-  </button> -->
+
 </nav>
