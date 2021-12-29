@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   resources :categories, only: [:show, :index]
   resources :photos
   get 'informations', to: "pages#informations", as: 'informations'
+  post 'contact', to: "pages#contact", as: :contact
 
   get 'categories/:id/swiper_show', to: 'categories#show_swiper', as: 'show_swiper'
 end
