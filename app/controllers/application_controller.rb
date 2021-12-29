@@ -5,5 +5,6 @@ class ApplicationController < ActionController::Base
 
   def set_navbar_variables
     @main_categories = MainCategory.all.includes(:categories)
+    @contact = Contact.new
   end
 end
