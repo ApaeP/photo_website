@@ -2,6 +2,6 @@ class ContactToSenderMailer < ApplicationMailer
   def new_contact
     @contact = params[:contact]
 
-    mail(to: @contact.email, subject: "You got a new order!")
+    mail(to: @contact.email, subject: "Votre demande de contact")
   end
 end

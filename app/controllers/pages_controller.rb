@@ -8,8 +8,7 @@ class PagesController < ApplicationController
   def contact
     @contact = Contact.new(params.require(:contact).permit(:email, :content))
     if @contact.save
-      ContactToOwnerMailer.with(contact: @contact).new_contact.deliver_later
-      ContactToSenderMailer.with(contact: @contact).new_contact.deliver_later
+
       respond_to do |format|
         format.html { redirect_to root_path }
         format.json { render json: {
