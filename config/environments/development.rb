@@ -30,15 +30,26 @@ Rails.application.configure do
     config.cache_store = :null_store
   end
 
-  # Store uploaded files on the local file system (see config/storage.yml for options).
   config.active_storage.service = :cloudinary
 
-  # Don't care if the mailer can't send.
+  # Mailer
   config.action_mailer.raise_delivery_errors = false
-
   config.action_mailer.perform_caching = false
-
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.default_options = { from: ENV['GMAIL_USER'] }
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.perform_deliveries = true
+  config.action_mailer.smtp_settings = {
+    address:              "smtp.gmail.com",
+    port:                 587,
+    domain:               'example.com',
+    user_name:            ENV['GMAIL_USER'],
+    password:             ENV['GMAIL_APPLICATION_PASSWORD'],
+    authentication:       "plain",
+    enable_starttls_auto: true,
+    open_timeout:         5,
+    read_timeout:         5
+  }
 
   # Print deprecation notices to the Rails logger.
   config.active_support.deprecation = :log

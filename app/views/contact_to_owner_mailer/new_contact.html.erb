@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body style="margin: 0;
+               font-family: Helvetica;">
+    <div style="width: 550px;
+                margin: 1rem auto;
+                /*border: 1px solid rgba(0, 0, 0, 0.2);*/
+                border-radius: 1rem;
+                padding: 2rem;">
+      <%= link_to root_url, target: "_blank", style: 'text-decoration: none; color: black;' do %>
+
+      <section style="font-weight: lighter;
+                      max-width: 100%;
+                      text-transform: uppercase;
+                      display: flex;
+                      flex-direction: column;
+                      justify-content: center;
+                      align-items: center;
+                      ">
+        <%= image_tag "logo.png", alt: "logo-paul-portier-photographe", style: 'height: 2rem;' %>
+        <p style="margin: 0.45rem auto 0.25rem auto; letter-spacing: 0.05em;">PAUL PORTIER</p>
+        <p style="margin: 0 auto 0 auto; font-size: 0.75rem;">PHOTOGRAPHE</p>
+      </section>
+      <% end -%>
+      <p style="font-size: 0.95rem;
+                text-transform: uppercase;
+                text-align: center;
+                letter-spacing: 0.05em;
+                margin: 4rem 0 4rem 0px;">
+        Demande de contact
+      </p>
+
+      <section>
+        <p style="font-weight: lighter;
+                  font-size: 0.75rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  margin: 2rem 0 0 0px;">
+          Email
+        </p>
+        <p style="font-weight: lighter;
+                  font-size: 1rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  ">
+          <%= @contact.email %>
+        </p>
+        <hr style="border: 0.1px solid rgba(0, 0, 0, 0.2);
+                   width: 75%;
+                   margin: 0 auto;">
+        <p style="font-weight: lighter;
+                  font-size: 0.75rem;
+                  text-transform: uppercase;
+                  letter-spacing: 0.05em;
+                  margin: 2rem 0 0 0px;">
+          Message
+        </p>
+        <p style="font-weight: lighter;
+                  font-size: 1rem;
+                  letter-spacing: 0.05em;
+                  text-align: justify;
+                  ">
+          <%= @contact.content %>
+        </p>
+      </section>
+    </div>
+  </body>
+</html>
