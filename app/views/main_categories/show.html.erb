@@ -1,6 +1,6 @@
 <section class="height-full-navbar-footer flex px-3 py-6 whitespace-nowrap">
   <% @categories.each do |cat| %>
-    <div class="w-1/<%= @main_category.categories.count %> px-3 relative">
+    <div class="w-1/<%= @main_category.categories.count %> px-1 lg:px-3 relative">
       <%= stimulus_link_to url: cat.show_url, class: "h-full w-full" do %>
         <div class=" h-full w-full" data-controller="swiper" data-swiper-autoplay="2000">
           <div class="swiper-container max-h-full h-full filter brightness-75" data-swiper-target="container">
@@ -13,9 +13,10 @@
             </ul>
           </div>
           <div class="absolute transform left-2/4 top-2/4 -translate-x-2/4 -translate-y-2/4
-                      rounded-full backdrop-blur h-1/2 w-1/2
+                      rounded-full backdrop-blur h-1/2
                       flex flex-col justify-center z-40 opacity-80 transition-all
-                      hover:opacity-100 duration-300 cursor-pointer">
+                      hover:opacity-100 duration-300 cursor-pointer"
+                style="width: calc(100% - 1.5rem);">
             <div class="flex justify-center">
               <%=
                 inline_svg_pack_tag "images/logo.svg",
@@ -26,7 +27,7 @@
                 }
               %>
             </div>
-            <span class="text-3xl md:text-4xl text-center font-thin text-white mt-1 md:mt-3">
+            <span class="text-xl md:text-2xl lg:text-4xl text-center font-thin text-white mt-1 md:mt-3">
               <%= cat.title.upcase %>
             </span>
           </div>
