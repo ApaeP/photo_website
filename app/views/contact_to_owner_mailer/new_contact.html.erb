@@ -15,23 +15,12 @@
       <section style="font-weight: lighter;
                       max-width: 100%;
                       text-transform: uppercase;
-                      display: -webkit-box;
-                      display: -ms-flexbox;
-                      display: flex;
-                      -webkit-box-orient: vertical;
-                      -webkit-box-direction: normal;
-                          -ms-flex-direction: column;
-                              flex-direction: column;
-                      -webkit-box-pack: center;
-                          -ms-flex-pack: center;
-                              justify-content: center;
-                      -webkit-box-align: center;
-                          -ms-flex-align: center;
-                              align-items: center;
                       ">
-        <%= image_tag "logo.png", alt: "logo-paul-portier-photographe", style: 'height: 2rem;' %>
-        <p style="margin: 0.45rem auto 0.25rem auto; letter-spacing: 0.05em;">PAUL PORTIER</p>
-        <p style="margin: 0 auto 0 auto; font-size: 0.75rem;">PHOTOGRAPHE</p>
+        <div style="margin: 0 auto; width: fit-content;">
+          <%= image_tag "logo.png", alt: "logo-paul-portier-photographe", style: 'height: 2rem; margin: 0 auto; display: block' %>
+          <p style="text-align: center; margin: 0.45rem auto 0.25rem auto; letter-spacing: 0.05em;">PAUL PORTIER</p>
+          <p style="text-align: center; margin: 0 auto 0 auto; font-size: 0.75rem;">PHOTOGRAPHE</p>
+        </div>
       </section>
       <% end -%>
       <p style="font-size: 0.95rem;
@@ -51,7 +40,7 @@
           Email
         </p>
         <p style="font-weight: lighter;
-                  font-size: 1rem;
+                  font-size: 0.85rem;
                   text-transform: uppercase;
                   letter-spacing: 0.05em;
                   ">
