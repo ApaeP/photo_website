@@ -46,6 +46,7 @@ group :development do
   gem 'pry-byebug'
   gem 'pry-rails'
   gem 'annotate'
+  gem "letter_opener"
 end
 
 group :test do

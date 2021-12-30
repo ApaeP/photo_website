@@ -33,14 +33,14 @@ Rails.application.configure do
   config.active_storage.service = :cloudinary
 
   # Mailer
-  config.action_mailer.raise_delivery_errors = false
-  config.action_mailer.perform_caching = false
-  config.action_mailer.delivery_method = :smtp
-  config.action_mailer.default_options = { from: ENV['GMAIL_USER'] }
-  config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
-  config.action_mailer.asset_host = 'http://localhost:3000'
-  config.action_mailer.perform_deliveries = true
-  config.action_mailer.smtp_settings = {
+  config.action_mailer.delivery_method        = :letter_opener
+  config.action_mailer.perform_deliveries     = true
+  config.action_mailer.perform_caching        = false
+  config.action_mailer.raise_delivery_errors  = false
+  config.action_mailer.asset_host             = 'http://localhost:3000'
+  config.action_mailer.default_url_options    = { host: 'localhost', port: 3000 }
+  config.action_mailer.default_options        = { from: ENV['GMAIL_USER'] }
+  config.action_mailer.smtp_settings          = {
     address:              "smtp.gmail.com",
     port:                 587,
     domain:               'example.com',
