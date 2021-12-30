@@ -1,0 +1,135 @@
+// Contact modal form
+#contact-modal {
+  border: 1rem solid rgba(0,0,0,0.1);
+}
+
+.contact-modal-form {
+  max-width: 30rem;
+  @apply relative w-5/6 sm:w-4/6 lg:w-3/6 max-w-6xl;
+
+  .close-span {
+    @apply absolute right-0 h-6 w-6 cursor-pointer;
+    transform: translateY(-150%);
+    svg {
+      @apply h-full w-full;
+      fill:#000000;
+    }
+  }
+  .recaptcha-error-notice {
+    @apply absolute right-0 h-6 bottom-0 uppercase text-xs text-red-500 tracking-wide;
+  }
+
+  .contact-modal-form-input-wrapper {
+    @apply my-4 border focus-within:border-gray-500 focus-within:text-blue-500 transition-all duration-500 relative rounded  py-1.5 px-2;
+    .error {
+      top: 0;
+      right: 1rem;
+      padding: 0 0.25rem;
+      color: rgb(235, 110, 120);
+      margin-top: -0.5rem;
+      position: absolute;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      font-size: 0.75rem;
+      line-height: 1rem;
+      background: white;
+    }
+  }
+
+  .contact-modal-form-input-label {
+    @apply -mt-4 absolute tracking-wider px-1 uppercase text-xs bg-white text-gray-600 px-1;
+  }
+
+  .contact-modal-form-input-input {
+    @apply px-1 text-gray-900 outline-none border-0 block h-full w-full py-2 font-extralight focus:ring-transparent;
+  }
+
+  .submit-btn {
+    @apply bg-white hover:bg-gray-100 text-gray-800 py-2 px-12 border rounded mx-auto block font-extralight uppercase text-sm transition-all cursor-pointer;
+  }
+}
+
+.lds-roller {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+.lds-roller div {
+  animation: lds-roller 1.5s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+  transform-origin: 40px 40px;
+}
+.lds-roller div:after {
+  content: " ";
+  display: block;
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.7);
+  margin: -4px 0 0 -4px;
+}
+.lds-roller div:nth-child(1) {
+  animation-delay: -0.036s;
+}
+.lds-roller div:nth-child(1):after {
+  top: 63px;
+  left: 63px;
+}
+.lds-roller div:nth-child(2) {
+  animation-delay: -0.072s;
+}
+.lds-roller div:nth-child(2):after {
+  top: 68px;
+  left: 56px;
+}
+.lds-roller div:nth-child(3) {
+  animation-delay: -0.108s;
+}
+.lds-roller div:nth-child(3):after {
+  top: 71px;
+  left: 48px;
+}
+.lds-roller div:nth-child(4) {
+  animation-delay: -0.144s;
+}
+.lds-roller div:nth-child(4):after {
+  top: 72px;
+  left: 40px;
+}
+.lds-roller div:nth-child(5) {
+  animation-delay: -0.18s;
+}
+.lds-roller div:nth-child(5):after {
+  top: 71px;
+  left: 32px;
+}
+.lds-roller div:nth-child(6) {
+  animation-delay: -0.216s;
+}
+.lds-roller div:nth-child(6):after {
+  top: 68px;
+  left: 24px;
+}
+.lds-roller div:nth-child(7) {
+  animation-delay: -0.252s;
+}
+.lds-roller div:nth-child(7):after {
+  top: 63px;
+  left: 17px;
+}
+.lds-roller div:nth-child(8) {
+  animation-delay: -0.288s;
+}
+.lds-roller div:nth-child(8):after {
+  top: 56px;
+  left: 12px;
+}
+@keyframes lds-roller {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
