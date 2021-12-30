@@ -9,6 +9,9 @@
         </path>
       </svg>
     </span>
+    <span class="recaptcha-error-notice hidden" data-contact-target="recaptchaErrorNotice">
+      Erreur recaptcha
+    </span>
     <%= f.input :email,
                 wrapper_html: { class: 'my-4 border focus-within:border-blue-500 focus-within:text-blue-500 transition-all duration-500 relative rounded  py-1.5 px-2' },
                 label_html: { class: '-mt-4 absolute tracking-wider px-1 uppercase text-xs bg-white text-gray-600 px-1' },
@@ -19,5 +22,6 @@
                 input_html: { class: 'px-1 text-gray-900 outline-none border-0 block h-full w-full text-sm py-2 font-extralight focus:ring-transparent' } %>
     <%= f.submit 'Envoyer', class: 'bg-white hover:bg-gray-100 text-gray-800 py-2 px-12 border rounded mx-auto block font-extralight uppercase text-sm transition-all cursor-pointer' %>
   <% end -%>
+    <%= recaptcha_execute('contact') %>
 </div>
 
