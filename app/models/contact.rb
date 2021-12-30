@@ -1,5 +1,6 @@
 class Contact < ApplicationRecord
-  validates :email, :content, presence: true
+  validates :content, presence: true, length: { minimum: 15 }
+  validates :email, presence: true, format: { with: URI::MailTo::EMAIL_REGEXP }
 
   after_create :send_emails
 
