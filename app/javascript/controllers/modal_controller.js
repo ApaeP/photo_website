@@ -1,7 +1,10 @@
 import { Controller } from "stimulus"
+import Swipeable from '../modules/touch_tracker'
+
+const swipeable = new Swipeable({ offset: 75 })
 
 export default class extends Controller {
-  static targets = ["modal", "element" ]
+  static targets = ["modal", "element", "touchSurface" ]
 
   connect() {
     document.addEventListener('keydown', (e) => {
@@ -15,6 +18,29 @@ export default class extends Controller {
         }
       }
     })
+    this._initTouch()
+  }
+
+  _initTouch() {
+    this.touchSurfaceTarget.addEventListener('touchstart', e => swipeable.touchStart(e))
+    this.touchSurfaceTarget.addEventListener('touchmove', e => {
+      swipeable.touchMove(e, {
+        onUp: (e, x) => {
+          this.hide()
+        },
+        onDown: (e, x) => {
+          this.hide()
+        },
+        onLeft: (e, x) => {
+          this.next()
+        },
+        onRight: (e, x) => {
+          this.previous()
+        }
+
+      })
+    })
+    this.touchSurfaceTarget.addEventListener('touchend', e => swipeable.touchEnd(e))
   }
 
   display(event) {

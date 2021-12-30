@@ -10,22 +10,24 @@
         </path>
       </svg>
     </div>
-    <div class="navigate-modal left" data-action="click->modal#previous">
+    <div class="navigate-modal left hidden lg:flex" data-action="click->modal#previous">
       <i class="fas fa-angle-left"></i>
     </div>
-    <div class="navigate-modal right" data-action="click->modal#next">
+    <div class="navigate-modal right hidden lg:flex" data-action="click->modal#next">
       <i class="fas fa-angle-right"></i>
     </div>
     <div id="close-modal-bottom" class="md:hidden" data-action="click->modal#hide">
       <i class="fas fa-times"></i>
     </div>
-    <% photos.each_with_index do |photo, i| %>
-      <div class="elements w-full h-full object-contain absolute px-4 py-12" data-modal-target="element">
+    <div class="h-full w-full" data-modal-target="touchSurface">
+      <% photos.each_with_index do |photo, i| %>
+        <div class="elements w-full h-full object-contain absolute px-4 py-12" data-modal-target="element">
 
-        <%#= cl_image_tag photo.image.key, class: "elements w-full h-5/6 object-contain absolute", data: { 'modal-target' => 'element' } %>
-        <%= cl_image_tag photo.image.key, class: "modal-image w-full h-full object-contain", data: { target: 'content'} %>
-      </div>
-    <% end %>
+          <%#= cl_image_tag photo.image.key, class: "elements w-full h-5/6 object-contain absolute", data: { 'modal-target' => 'element' } %>
+          <%= cl_image_tag photo.image.key, class: "modal-image w-full h-full object-contain", data: { target: 'content'} %>
+        </div>
+      <% end %>
+    </div>
     <div class="absolute bottom-0 h-12 w-screen z-80 hidden sm:flex flex-wrap justify-center px-2">
       <% photos.each_with_index do |photo, i| %>
         <div class="modal-illustrations relative group h-full p-0.5 mt-0.5 cursor-pointer flex flex-col justify-center"
