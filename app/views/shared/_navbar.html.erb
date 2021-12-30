@@ -6,22 +6,23 @@
         class: 'h-10 w-8',
         data: {
           controller: 'inline-svg',
+          action: "click->contact#hide",
           'svg-class' => 'fill-current text-black'
         }
       %>
     <% end %>
     <ul class="hidden md:flex px-4 mx-auto font-semibold font-heading space-x-12 absolute left-2/4 transform -translate-x-2/4">
-      <li>
+      <li data-action="click->contact#hide">
         <%= stimulus_link_to str: "Accueil", url: root_path, class: "hover:text-gray-700" %>
       </li>
       <% @main_categories.each do |main_cat| %>
-        <li class="group relative">
+        <li class="group relative" data-action="click->contact#hide">
           <%= stimulus_link_to url: main_category_path(main_cat) do %>
             <%= main_cat.title %>
           <% end %>
           <div class="group-hover:block hidden absolute pt-7 bg-white left-2/4 transform -translate-x-2/4 pb-3 min-w-">
             <% main_cat.categories.each do |cat| %>
-              <%= stimulus_link_to url: category_path(cat), class: "dropdown-element" do %>
+              <%= stimulus_link_to url: category_path(cat), class: "dropdown-element", data: { action: "click->contact#hide" } do %>
                 <%= cat.title %>
               <% end -%>
             <% end %>
@@ -29,10 +30,10 @@
         </li>
       <% end %>
 
-      <li><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
+      <li data-action="click->contact#hide"><%= stimulus_link_to str: 'Informations', url: informations_path, class: 'hover:text-gray-200' %></li>
       <% if user_signed_in? %>
-        <li><%= link_to "Admin", admin_root_path %></li>
-        <li><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
+        <li data-action="click->contact#hide"><%= link_to "Admin", admin_root_path %></li>
+        <li data-action="click->contact#hide"><%= link_to "Déconnexion", destroy_user_session_path, method: :delete %></li>
       <% end %>
     </ul>
     <div class="hidden lg:flex items-center space-x-5 absolute right-12">
@@ -42,7 +43,7 @@
     </div>
 
     <div class="md:hidden absolute transform -translate-x-full left-full h-full w-20 items-center flex justify-center cursor-pointer"
-         data-action="click->navbar#togglePhoneMenu">
+         data-action="click->navbar#togglePhoneMenu click->contact#hide">
       <div class="phone-menu-icon">
         <input class="phone-menu-checkbox" type="checkbox" data-navbar-target="togglePhoneMenuButton" />
         <div>
