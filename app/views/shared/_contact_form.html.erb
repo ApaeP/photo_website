@@ -19,12 +19,12 @@
     <span class="recaptcha-error-notice hidden" data-contact-target="recaptchaErrorNotice">
       Erreur recaptcha
     </span>
-    <%= f.input :email,
+    <%= f.input :email, label: 'Votre email',
                 wrapper_html: { class: 'contact-modal-form-input-wrapper' },
                 label_html: { class: 'contact-modal-form-input-label' },
                 input_html: { class: 'contact-modal-form-input-input text-xs' } %>
 
-    <%= f.input :content, as: :text,
+    <%= f.input :content, as: :text, label: 'Votre message',
                 wrapper_html: { class: 'contact-modal-form-input-wrapper h-36' },
                 label_html: { class: 'contact-modal-form-input-label' },
                 input_html: { class: 'contact-modal-form-input-input text-sm' } %>
