@@ -9,12 +9,12 @@
               data-action="click->modal#display"
               data-id="<%= i %>">
           <% if photo.name.present? %>
-            <div class="text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
+            <div class="hidden sm:block text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
               <p class="whitespace-normal"><%= photo.name&.upcase %></p>
             </div>
           <% end %>
           <% if photo.description.present? %>
-            <div class="text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
+            <div class="hidden sm:block text-center w-full bg-white bg-opacity-50 flex items-center justify-center p-8">
               <p class="whitespace-normal"><%= photo.description %></p>
             </div>
           <% end %>
