@@ -18,6 +18,6 @@ ActiveAdmin.register Category do
       end
     end
   end
-  permit_params :title, :parent_category_id
+  permit_params :title, :main_category_id
 end
 
